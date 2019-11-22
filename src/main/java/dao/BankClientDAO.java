@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BankClientDAO {
@@ -18,6 +19,21 @@ public class BankClientDAO {
     }
 
     public List<BankClient> getAllBankClient() {
+        try (Statement stmt = connection.createStatement()) {
+            List<BankClient> list = new ArrayList<>();
+            stmt.execute("select * from bank_client");
+            ResultSet result = stmt.getResultSet();
+            do {
+                BankClient bc = new BankClient(result.getLong(1),
+                        result.getString(2),
+                        result.getString(3),
+                        result.getLong(4));
+                list.add(bc);
+            } while (!result.isLast());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -52,8 +68,17 @@ public class BankClientDAO {
         return null;
     }
 
-    public void addClient(BankClient client) throws SQLException {
-
+    public void addClient(BankClient client) {
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute("nsert into bank_client values(" +
+//                    client.getId() + ", " +
+                    client.getName() + ", " +
+                    client.getPassword() + ", " +
+                    client.getMoney() +")");
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void createTable() throws SQLException {

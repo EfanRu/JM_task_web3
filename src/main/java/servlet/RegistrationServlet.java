@@ -1,7 +1,9 @@
 package servlet;
 
+import exception.DBException;
 import model.BankClient;
 import service.BankClientService;
+//import sun.awt.image.BadDepthException;
 import util.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -21,6 +23,13 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //new BankClientService().addClient();
+        try {
+            BankClient bc = new BankClient(req.getParameter("name"),
+                    req.getParameter("password"),
+                    Long.parseLong(req.getParameter("money")));
+        new BankClientService().addClient(bc);
+        } catch (DBException e) {
+            e.printStackTrace();
+        }
     }
 }
