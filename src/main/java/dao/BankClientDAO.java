@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankClientDAO {
-
     private Connection connection;
 
     public BankClientDAO(Connection connection) {
@@ -19,8 +18,9 @@ public class BankClientDAO {
     }
 
     public List<BankClient> getAllBankClient() {
+        List<BankClient> list = new ArrayList<>();
+
         try (Statement stmt = connection.createStatement()) {
-            List<BankClient> list = new ArrayList<>();
             stmt.execute("select * from bank_client");
             ResultSet result = stmt.getResultSet();
             do {
@@ -34,7 +34,7 @@ public class BankClientDAO {
             e.printStackTrace();
         }
 
-        return null;
+        return list;
     }
 
     public boolean validateClient(String name, String password) {
@@ -70,12 +70,11 @@ public class BankClientDAO {
 
     public void addClient(BankClient client) {
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute("nsert into bank_client values(" +
+            stmt.execute("insert into bank_client values(" +
 //                    client.getId() + ", " +
                     client.getName() + ", " +
                     client.getPassword() + ", " +
                     client.getMoney() +")");
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

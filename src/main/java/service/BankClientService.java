@@ -36,8 +36,9 @@ public class BankClientService {
     }
 
     public boolean addClient(BankClient client) throws DBException {
-        new BankClientDAO()
-        return false;
+        getBankClientDAO().addClient(client);
+        //Need add logic return boolean
+        return true;
     }
 
     public boolean sendMoneyToClient(BankClient sender, String name, Long value) {
@@ -73,7 +74,7 @@ public class BankClientService {
                     append("3306/").                //port
                     //For testing
 //                    append("db_example?").          //db name
-                    append("test?").          //db name
+                    append("test2?").          //db name
                     append("user=root&").          //login
                     append("password=root");       //password
 
