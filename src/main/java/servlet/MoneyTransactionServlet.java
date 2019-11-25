@@ -1,5 +1,6 @@
 package servlet;
 
+import exception.DBException;
 import model.BankClient;
 import service.BankClientService;
 import util.PageGenerator;
@@ -24,6 +25,22 @@ public class MoneyTransactionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        bankClientService.sendMoneyToClient();
+        try {
+            BankClient sender = bankClientService.getClientByName(req.getParameter("SenderName"));
+            if (sender.getPassword().equals(req.getParameter("SenderPass"))) {
+                bankClientService.sendMoneyToClient(sender,
+                        req.getParameter("nameTo"),
+                        Long.parseLong(req.getParameter("count")));
+                resp.setStatus(HttpServletResponse.SC_OK);
+            } else {
+                resp.getWriter().println("Invalid password!");
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
+        } catch (DBException e) {
+            resp.getWriter().println("Transaction error!");
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            e.printStackTrace();
+        }
+        resp.setContentType("text/html;charset=utf-8");
     }
 }

@@ -3,10 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="fa7a39cc-49be-465c-b61a-b54af8a170df" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/DBException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exception/DBException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/BankClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/BankClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/BankClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/BankClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/ApiServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/ApiServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/RegistrationServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/RegistrationServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/ResultServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/ResultServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/PageGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/PageGenerator.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +53,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -54,6 +62,7 @@
   </component>
   <component name="ProjectId" id="1Tw6Unr6ThSqc5P1VhD5ZMpRJU7" />
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -168,6 +177,21 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@968cbcd0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -181,11 +205,9 @@
       <workItem from="1562518645981" duration="1087000" />
       <workItem from="1562570629416" duration="18548000" />
       <workItem from="1562922368587" duration="6146000" />
+      <workItem from="1574661775017" duration="17951000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25781000" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -202,6 +224,47 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

@@ -27,9 +27,17 @@ public class RegistrationServlet extends HttpServlet {
             BankClient bc = new BankClient(req.getParameter("name"),
                     req.getParameter("password"),
                     Long.parseLong(req.getParameter("money")));
-        new BankClientService().addClient(bc);
+            new BankClientService().addClient(bc);
+            resp.getWriter().println("Client successful added.");
         } catch (DBException e) {
             e.printStackTrace();
+            resp.getWriter().println("Exception in registration client:" + e.getMessage());
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            resp.getWriter().println("Exception in registration data:" + e.getMessage());
+            resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
         }
+        resp.setContentType("text/html;charset=utf-8");
     }
 }

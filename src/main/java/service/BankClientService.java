@@ -4,10 +4,7 @@ import dao.BankClientDAO;
 import exception.DBException;
 import model.BankClient;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class BankClientService {
@@ -16,36 +13,40 @@ public class BankClientService {
     }
 
     public BankClient getClientById(long id) throws DBException {
-        try {
-            return getBankClientDAO().getClientById(id);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
+        return getBankClientDAO().getClientById(id);
     }
 
     public BankClient getClientByName(String name) {
-        return null;
+        try {
+            return getBankClientDAO().getClientByName(name);
+        } catch (DBException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<BankClient> getAllClient() {
-        return  null;
+        return  getBankClientDAO().getAllBankClient();
     }
 
-    public boolean deleteClient(String name) {
-        return false;
+    public boolean deleteClient(String name) throws DBException {
+        BankClientDAO dao = getBankClientDAO();
+        BankClient bc = dao.getClientByName(name);
+        dao.deleteClient(bc);
+        return true;
     }
 
     public boolean addClient(BankClient client) throws DBException {
         getBankClientDAO().addClient(client);
-        //Need add logic return boolean
         return true;
     }
 
-    public boolean sendMoneyToClient(BankClient sender, String name, Long value) {
-        return false;
+    public boolean sendMoneyToClient(BankClient sender, String name, Long value) throws DBException {
+        return getBankClientDAO().sendMoney(sender, name, value);
     }
 
     public void cleanUp() throws DBException {
+        //default method
         BankClientDAO dao = getBankClientDAO();
         try {
             dao.dropTable();
@@ -54,15 +55,17 @@ public class BankClientService {
         }
     }
     public void createTable() throws DBException{
+        //default method
         BankClientDAO dao = getBankClientDAO();
         try {
-            dao.createTable();
+            getBankClientDAO().createTable();
         } catch (SQLException e) {
             throw new DBException(e);
         }
     }
 
     private static Connection getMysqlConnection() {
+        //default method
         try {
             DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
 
@@ -74,7 +77,7 @@ public class BankClientService {
                     append("3306/").                //port
                     //For testing
 //                    append("db_example?").          //db name
-                    append("test2?").          //db name
+                    append("test?").          //db name
                     append("user=root&").          //login
                     append("password=root");       //password
 

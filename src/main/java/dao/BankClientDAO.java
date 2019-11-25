@@ -1,12 +1,10 @@
 package dao;
 
 //import com.sun.deploy.util.SessionState;
+import exception.DBException;
 import model.BankClient;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,60 +21,138 @@ public class BankClientDAO {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("select * from bank_client");
             ResultSet result = stmt.getResultSet();
-            do {
+            while (result.next()){
                 BankClient bc = new BankClient(result.getLong(1),
                         result.getString(2),
                         result.getString(3),
                         result.getLong(4));
                 list.add(bc);
-            } while (!result.isLast());
+            }
         } catch (SQLException e) {
+            //Exception ignored
             e.printStackTrace();
         }
 
         return list;
     }
 
-    public boolean validateClient(String name, String password) {
-        return false;
+    public boolean validateClient(String name, String password) throws DBException {
+        return getClientByName(name).getPassword().equals(password);
     }
 
-    public void updateClientsMoney(String name, String password, Long transactValue) {
-
+    public void updateClientsMoney(String name, String password, Long transactValue) throws DBException {
+        BankClient bc = getClientByName(name);
+        if (bc.getPassword().equals(password) && (bc.getMoney() + transactValue) > 0) {
+            String sql = "update bank_client set money=money + ? where id=? and name=? and password=?";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                connection.setAutoCommit(false);
+                pstmt.setLong(1, transactValue);
+                pstmt.setLong(2, bc.getId());
+                pstmt.setString(3, name);
+                pstmt.setString(4, password);
+                pstmt.executeUpdate();
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                throw new DBException(e);
+            }
+        } else {
+            //Need write exception
+            System.out.println("Not enought money at user " + bc.getName() + " Id: " + bc.getId());
+        }
     }
 
-    public BankClient getClientById(long id) throws SQLException {
-        return null;
-    }
-
-    public boolean isClientHasSum(String name, Long expectedSum) {
-        return false;
-    }
-
-    public long getClientIdByName(String name) throws SQLException {
-        Statement stmt = connection.createStatement();
-        stmt.execute("select * from bank_clien where name='" + name + "'");
-        ResultSet result = stmt.getResultSet();
-        result.next();
-        Long id = result.getLong(1);
-        result.close();
-        stmt.close();
-        return id;
-    }
-
-    public BankClient getClientByName(String name) {
-        return null;
-    }
-
-    public void addClient(BankClient client) {
-        try (Statement stmt = connection.createStatement()) {
-            stmt.execute("insert into bank_client values(" +
-//                    client.getId() + ", " +
-                    client.getName() + ", " +
-                    client.getPassword() + ", " +
-                    client.getMoney() +")");
+    public boolean sendMoney(BankClient sender, String name, Long value) throws DBException {
+        try {
+            connection.setAutoCommit(false);
+            Savepoint sp = connection.setSavepoint();
+            updateClientsMoney(sender.getName(), sender.getPassword(), -1*value);
+            BankClient bc = getClientByName(name);
+            updateClientsMoney(bc.getName(), bc.getPassword(), value);
+            connection.setAutoCommit(true);
+            return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DBException(e);
+        }
+    }
+
+    public BankClient getClientById(long id) throws DBException {
+        String sql = "select * from bank_client where id='?'";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+       // Need check
+            pstmt.executeQuery();
+            ResultSet result = pstmt.getResultSet();
+            result.next();
+            result.close();
+            return new BankClient(result.getLong(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getLong(4));
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public boolean isClientHasSum(String name, Long expectedSum) throws DBException {
+        return getClientByName(name).getMoney() >= expectedSum;
+    }
+
+    public long getClientIdByName(String name) throws DBException {
+        return getClientByName(name).getId();
+    }
+
+    public BankClient getClientByName(String name) throws DBException {
+        String sql = "select * from bank_client where name=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, name);
+            pstmt.executeQuery();
+            ResultSet result = pstmt.getResultSet();
+            result.next();
+//            result.close();
+
+// Trouble
+            return new BankClient(result.getLong(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getLong(4));
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public void addClient(BankClient client) throws DBException {
+        String sql = "insert into bank_client values(?, ?, ?, ?)";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+//            dropTable();
+            createTable();
+            connection.setAutoCommit(false);
+            pstmt.setLong(1, client.getId());
+            pstmt.setString(2, client.getName());
+            pstmt.setString(3, client.getPassword());
+            pstmt.setLong(4, client.getMoney());
+            pstmt.executeUpdate();
+//            stmt.execute("insert into bank_client values(" +
+//                    client.getId() + ", " +
+//                    client.getName() + ", " +
+//                    client.getPassword() + ", " +
+//                    client.getMoney() +")");
+            connection.commit();
+            connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public void deleteClient(BankClient client) throws DBException {
+        String sql = "delete from bank_client where id='?' name='?' password='?'";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setLong(1, client.getId());
+            pstmt.setString(2, client.getName());
+            pstmt.setString(3, client.getPassword());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DBException(e);
         }
     }
 
