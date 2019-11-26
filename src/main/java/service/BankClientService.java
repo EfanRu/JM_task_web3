@@ -36,12 +36,12 @@ public class BankClientService {
         return true;
     }
 
-    public boolean addClient(BankClient client) throws DBException {
+    public boolean addClient(BankClient client) {
         try {
-            getBankClientDAO().addClient(client);
-            return true;
+//            getBankClientDAO().addClient(client);
+            return getBankClientDAO().addClient(client);
         } catch (DBException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return false;
         }
     }

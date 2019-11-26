@@ -121,12 +121,17 @@ public class BankClientDAO {
         }
     }
 
-    public void addClient(BankClient client) throws DBException {
+    public boolean addClient(BankClient client) throws DBException {
 
         for (BankClient bc : getAllBankClient()) {
             if (bc.getName().equals(client.getName())) {
-                throw new DBException(new Throwable());
-//                return;
+                System.out.println(bc.getName()
+                + " equals "
+                + client.getName()
+                + " ?");
+                System.out.println("Exception in check double client");
+//                throw new DBException(new SQLException());
+                return false;
             }
         }
 
@@ -142,6 +147,7 @@ public class BankClientDAO {
             pstmt.executeUpdate();
 //            connection.commit();
 //            connection.setAutoCommit(true);
+            return true;
         } catch (SQLException e) {
             throw new DBException(e);
         }
