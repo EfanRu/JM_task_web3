@@ -42,32 +42,33 @@ public class BankClientDAO {
 
     public void updateClientsMoney(String name, String password, Long transactValue) throws DBException {
         BankClient bc = getClientByName(name);
-        if (bc.getPassword().equals(password) && (bc.getMoney() + transactValue) > 0) {
+        if (bc.getPassword().equals(password) && (bc.getMoney() + transactValue) >= 0) {
             String sql = "update bank_client set money=money + ? where id=? and name=? and password=?";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                connection.setAutoCommit(false);
                 pstmt.setLong(1, transactValue);
                 pstmt.setLong(2, bc.getId());
                 pstmt.setString(3, name);
                 pstmt.setString(4, password);
                 pstmt.executeUpdate();
-                connection.setAutoCommit(true);
             } catch (SQLException e) {
                 throw new DBException(e);
             }
         } else {
             //Need write exception
             System.out.println("Not enought money at user " + bc.getName() + " Id: " + bc.getId());
+            throw new DBException(new Throwable());
         }
     }
 
     public boolean sendMoney(BankClient sender, String name, Long value) throws DBException {
         try {
             connection.setAutoCommit(false);
+            //Why is it????
             Savepoint sp = connection.setSavepoint();
             updateClientsMoney(sender.getName(), sender.getPassword(), -1*value);
             BankClient bc = getClientByName(name);
             updateClientsMoney(bc.getName(), bc.getPassword(), value);
+            connection.commit();
             connection.setAutoCommit(true);
             return true;
         } catch (SQLException e) {
@@ -121,24 +122,26 @@ public class BankClientDAO {
     }
 
     public void addClient(BankClient client) throws DBException {
+
+        for (BankClient bc : getAllBankClient()) {
+            if (bc.getName().equals(client.getName())) {
+                throw new DBException(new Throwable());
+//                return;
+            }
+        }
+
         String sql = "insert into bank_client values(?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-//            dropTable();
-            createTable();
-            connection.setAutoCommit(false);
+//            createTable();
+//            connection.setAutoCommit(false);
             pstmt.setLong(1, client.getId());
             pstmt.setString(2, client.getName());
             pstmt.setString(3, client.getPassword());
             pstmt.setLong(4, client.getMoney());
             pstmt.executeUpdate();
-//            stmt.execute("insert into bank_client values(" +
-//                    client.getId() + ", " +
-//                    client.getName() + ", " +
-//                    client.getPassword() + ", " +
-//                    client.getMoney() +")");
-            connection.commit();
-            connection.setAutoCommit(true);
+//            connection.commit();
+//            connection.setAutoCommit(true);
         } catch (SQLException e) {
             throw new DBException(e);
         }

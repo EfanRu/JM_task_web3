@@ -25,19 +25,24 @@ public class MoneyTransactionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HashMap<String, Object> parameters = new HashMap<>();
         try {
             BankClient sender = bankClientService.getClientByName(req.getParameter("SenderName"));
             if (sender.getPassword().equals(req.getParameter("SenderPass"))) {
                 bankClientService.sendMoneyToClient(sender,
                         req.getParameter("nameTo"),
                         Long.parseLong(req.getParameter("count")));
+                parameters.put("message", "The transaction was successful");
+                resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
                 resp.setStatus(HttpServletResponse.SC_OK);
             } else {
-                resp.getWriter().println("Invalid password!");
+                parameters.put("message", "transaction rejected");
+                resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             }
         } catch (DBException e) {
-            resp.getWriter().println("Transaction error!");
+            parameters.put("message", "transaction rejected");
+            resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             e.printStackTrace();
         }

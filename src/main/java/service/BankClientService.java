@@ -37,8 +37,13 @@ public class BankClientService {
     }
 
     public boolean addClient(BankClient client) throws DBException {
-        getBankClientDAO().addClient(client);
-        return true;
+        try {
+            getBankClientDAO().addClient(client);
+            return true;
+        } catch (DBException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean sendMoneyToClient(BankClient sender, String name, Long value) throws DBException {

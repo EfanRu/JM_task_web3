@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa7a39cc-49be-465c-b61a-b54af8a170df" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/ResultServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/ResultServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/exception/DBException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exception/DBException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/BankClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/BankClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/service/BankClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/BankClientService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/servlet/ApiServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/ApiServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/servlet/RegistrationServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/RegistrationServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/servlet/ResultServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/ResultServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/PageGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/PageGenerator.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -206,6 +198,7 @@
       <workItem from="1562570629416" duration="18548000" />
       <workItem from="1562922368587" duration="6146000" />
       <workItem from="1574661775017" duration="17951000" />
+      <workItem from="1574748036004" duration="11176000" />
     </task>
     <servers />
   </component>
@@ -224,47 +217,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>
