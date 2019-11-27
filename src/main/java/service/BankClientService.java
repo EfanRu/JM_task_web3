@@ -20,7 +20,7 @@ public class BankClientService {
         try {
             return getBankClientDAO().getClientByName(name);
         } catch (DBException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return null;
         }
     }

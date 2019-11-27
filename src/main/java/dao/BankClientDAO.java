@@ -62,16 +62,21 @@ public class BankClientDAO {
 
     public boolean sendMoney(BankClient sender, String name, Long value) throws DBException {
         try {
-            connection.setAutoCommit(false);
-            //Why is it????
-            Savepoint sp = connection.setSavepoint();
-            updateClientsMoney(sender.getName(), sender.getPassword(), -1*value);
-            BankClient bc = getClientByName(name);
-            updateClientsMoney(bc.getName(), bc.getPassword(), value);
-            connection.commit();
-            connection.setAutoCommit(true);
-            return true;
-        } catch (SQLException e) {
+            if (validateClient(sender.getName(), sender.getPassword())
+                && isClientHasSum(sender.getName(), value)) {
+                connection.setAutoCommit(false);
+                //Why is it????
+//                Savepoint sp = connection.setSavepoint();
+                updateClientsMoney(sender.getName(), sender.getPassword(), -1*value);
+                BankClient bc = getClientByName(name);
+                updateClientsMoney(bc.getName(), bc.getPassword(), value);
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException | NullPointerException e) {
             throw new DBException(e);
         }
     }

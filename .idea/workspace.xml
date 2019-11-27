@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa7a39cc-49be-465c-b61a-b54af8a170df" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/BankClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/BankClientService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,6 +50,13 @@
     </option>
   </component>
   <component name="ProjectId" id="1Tw6Unr6ThSqc5P1VhD5ZMpRJU7" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -53,7 +65,7 @@
     <property name="android.sdk.path" value="C:/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web3complete/web3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -161,21 +173,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@968cbcd0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -191,6 +188,8 @@
       <workItem from="1562922368587" duration="6146000" />
       <workItem from="1574661775017" duration="17951000" />
       <workItem from="1574748036004" duration="16035000" />
+      <workItem from="1574834152767" duration="6794000" />
+      <workItem from="1574857146735" duration="2384000" />
     </task>
     <servers />
   </component>
@@ -210,32 +209,38 @@
       </map>
     </option>
   </component>
+  <component name="WindowStateProjectService">
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1574834087407">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1574834087407" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>142</line>
+          <line>147</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>143</line>
+          <line>148</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>144</line>
+          <line>149</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>145</line>
+          <line>150</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>146</line>
+          <line>151</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
