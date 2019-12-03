@@ -18,13 +18,18 @@ public class ApiServlet extends HttpServlet {
         BankClientService bankClientService = new BankClientService();
         Gson gson = new Gson();
         String json;
-        if (req.getPathInfo().contains("all")) {
-            json = gson.toJson(bankClientService.getAllClient());
-        } else {
-            json = gson.toJson(bankClientService.getClientByName(req.getParameter("name")));
+        try {
+            if (req.getPathInfo().contains("all")) {
+                json = gson.toJson(bankClientService.getAllClient());
+            } else {
+                json = gson.toJson(bankClientService.getClientByName(req.getParameter("name")));
+            }
+            resp.setStatus(200);
+        } catch (DBException e) {
+            resp.setStatus(403);
+            json = gson.toJson("Exception:" + e.getMessage());
         }
         resp.getWriter().write(json);
-        resp.setStatus(200);
     }
 
     @Override

@@ -16,16 +16,11 @@ public class BankClientService {
         return getBankClientDAO().getClientById(id);
     }
 
-    public BankClient getClientByName(String name) {
-        try {
-            return getBankClientDAO().getClientByName(name);
-        } catch (DBException e) {
-//            e.printStackTrace();
-            return null;
-        }
+    public BankClient getClientByName(String name) throws DBException {
+        return getBankClientDAO().getClientByName(name);
     }
 
-    public List<BankClient> getAllClient() {
+    public List<BankClient> getAllClient()throws DBException {
         return  getBankClientDAO().getAllBankClient();
     }
 
@@ -36,14 +31,8 @@ public class BankClientService {
         return true;
     }
 
-    public boolean addClient(BankClient client) {
-        try {
-//            getBankClientDAO().addClient(client);
-            return getBankClientDAO().addClient(client);
-        } catch (DBException e) {
-//            e.printStackTrace();
-            return false;
-        }
+    public boolean addClient(BankClient client) throws DBException {
+        return getBankClientDAO().addClient(client);
     }
 
     public boolean sendMoneyToClient(BankClient sender, String name, Long value) throws DBException {
@@ -51,7 +40,6 @@ public class BankClientService {
     }
 
     public void cleanUp() throws DBException {
-        //default method
         BankClientDAO dao = getBankClientDAO();
         try {
             dao.dropTable();
@@ -59,8 +47,7 @@ public class BankClientService {
             throw new DBException(e);
         }
     }
-    public void createTable() throws DBException{
-        //default method
+    public void createTable() throws DBException {
         BankClientDAO dao = getBankClientDAO();
         try {
             getBankClientDAO().createTable();
@@ -70,7 +57,6 @@ public class BankClientService {
     }
 
     private static Connection getMysqlConnection() {
-        //default method
         try {
             DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
 
@@ -80,8 +66,6 @@ public class BankClientService {
                     append("jdbc:mysql://").        //db type
                     append("localhost:").           //host name
                     append("3306/").                //port
-                    //For testing
-//                    append("db_example?").          //db name
                     append("test?").          //db name
                     append("user=root&").          //login
                     append("password=root");       //password

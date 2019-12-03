@@ -15,7 +15,7 @@ public class BankClientDAO {
         this.connection = connection;
     }
 
-    public List<BankClient> getAllBankClient() {
+    public List<BankClient> getAllBankClient() throws DBException {
         List<BankClient> list = new ArrayList<>();
 
         try (Statement stmt = connection.createStatement()) {
@@ -29,10 +29,8 @@ public class BankClientDAO {
                 list.add(bc);
             }
         } catch (SQLException e) {
-            //Exception ignored
-            e.printStackTrace();
+            throw new DBException(e);
         }
-
         return list;
     }
 
@@ -54,7 +52,6 @@ public class BankClientDAO {
                 throw new DBException(e);
             }
         } else {
-            //Need write exception
             System.out.println("Not enought money at user " + bc.getName() + " Id: " + bc.getId());
             throw new DBException(new Throwable());
         }
@@ -65,8 +62,6 @@ public class BankClientDAO {
             if (validateClient(sender.getName(), sender.getPassword())
                 && isClientHasSum(sender.getName(), value)) {
                 connection.setAutoCommit(false);
-                //Why is it????
-//                Savepoint sp = connection.setSavepoint();
                 updateClientsMoney(sender.getName(), sender.getPassword(), -1*value);
                 BankClient bc = getClientByName(name);
                 updateClientsMoney(bc.getName(), bc.getPassword(), value);
@@ -85,7 +80,6 @@ public class BankClientDAO {
         String sql = "select * from bank_client where id='?'";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setLong(1, id);
-       // Need check
             pstmt.executeQuery();
             ResultSet result = pstmt.getResultSet();
             result.next();
@@ -114,9 +108,6 @@ public class BankClientDAO {
             pstmt.executeQuery();
             ResultSet result = pstmt.getResultSet();
             result.next();
-//            result.close();
-
-// Trouble
             return new BankClient(result.getLong(1),
                     result.getString(2),
                     result.getString(3),
@@ -135,7 +126,6 @@ public class BankClientDAO {
                 + client.getName()
                 + " ?");
                 System.out.println("Exception in check double client");
-//                throw new DBException(new SQLException());
                 return false;
             }
         }
@@ -143,15 +133,11 @@ public class BankClientDAO {
         String sql = "insert into bank_client values(?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-//            createTable();
-//            connection.setAutoCommit(false);
             pstmt.setLong(1, client.getId());
             pstmt.setString(2, client.getName());
             pstmt.setString(3, client.getPassword());
             pstmt.setLong(4, client.getMoney());
             pstmt.executeUpdate();
-//            connection.commit();
-//            connection.setAutoCommit(true);
             return true;
         } catch (SQLException e) {
             throw new DBException(e);

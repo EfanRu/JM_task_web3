@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa7a39cc-49be-465c-b61a-b54af8a170df" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/BankClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BankClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BankClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/ApiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/ApiServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MoneyTransactionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/BankClientDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/BankClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/BankClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/service/BankClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/BankClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/ApiServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/ApiServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/MoneyTransactionServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/RegistrationServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/RegistrationServlet.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +70,7 @@
     <property name="android.sdk.path" value="C:/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web3complete/web3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -189,7 +194,9 @@
       <workItem from="1574661775017" duration="17951000" />
       <workItem from="1574748036004" duration="16035000" />
       <workItem from="1574834152767" duration="6794000" />
-      <workItem from="1574857146735" duration="2384000" />
+      <workItem from="1574857146735" duration="4304000" />
+      <workItem from="1574935394380" duration="602000" />
+      <workItem from="1575356234830" duration="2069000" />
     </task>
     <servers />
   </component>
@@ -214,45 +221,6 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1574834087407" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>148</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/BankClientDAO.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/RegistrationServlet.java</url>
-          <line>24</line>
-          <properties class="servlet.RegistrationServlet" method="doPost">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

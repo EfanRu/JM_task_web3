@@ -24,27 +24,21 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<String, Object> parameters = new HashMap<>();
-//        try {
+        try {
             BankClient bc = new BankClient(req.getParameter("name"),
                     req.getParameter("password"),
                     Long.parseLong(req.getParameter("money")));
-//            new BankClientService().addClient(bc);
             if (new BankClientService().addClient(bc)) {
                 parameters.put("message", "Add client successful");
-                resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
-                resp.setStatus(HttpServletResponse.SC_OK);
             } else {
                 parameters.put("message", "Client not add");
-                resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
-                resp.setStatus(HttpServletResponse.SC_OK);
-//                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             }
-//        } catch (DBException e) {
-//            e.printStackTrace();
-//            parameters.put("message", "Client not add");
-//            resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//        }
+        } catch (DBException e) {
+            e.printStackTrace();
+            parameters.put("message", "Client not add");
+        }
+        resp.getWriter().println(PageGenerator.getInstance().getPage("resultPage.html", parameters));
+        resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=utf-8");
     }
 }

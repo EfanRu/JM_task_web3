@@ -69,7 +69,6 @@ public class BankClient {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getName(), getMoney());
     }
 }
